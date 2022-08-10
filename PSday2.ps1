@@ -30,3 +30,15 @@ get-process svchost | select-object -expandproperty handles
 Get-Process | where-object processname -ne "Idle" | Sort-Object StartTime | Select-object -last 10 | format-table ProcessName, StartTime
 
 Get-ChildItem | measure-object Length -average -maximum -minimum -sum
+
+compare-object $1 $2 -Property Length, Name
+
+$mycar = New-Object object
+add-member -membertype NoteProperty -Name Color -Value "Blue-Gray Green Turquoise Thing" -InputObject $mycar
+add-member -membertype NoteProperty -Name Make -Value "Hondyota Fordoma" -InputObject $mycar
+add-member -inputobject $mycar Noteproperty Model "Model Cherokee X Sport Maximus"
+$mycar | add-member Noteproperty Cab "Big, Very Big Extended Quad Cab"
+add-member -membertype Scriptmethod -Name Read -Value {"I'm not entirely sure this book is appropriate."} -Inputobject $mycar
+add-member -membertype Scriptmethod -Name Cook -Value {"I hope my oi is human-friendly; It's all over everything"} -inputobject $mycar
+add-member -membertype Scriptmethod -Name Drive -Value {"Are you Sure?"}  -inputobject $mycar
+add-member -membertype Scriptmethod -Name Script -Value {"Give me all your parameters. I shall do it!"} -inputobject $mycar
