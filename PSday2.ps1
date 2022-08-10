@@ -53,7 +53,7 @@ $mycomp = New-Object object
 
 $mycomp | Add-Member -MemberType NoteProperty -Name ComputerName -Value $compinfo.Name
 $mycomp | Add-Member -MemberType NoteProperty -Name OperatingSystem -Value $osinfo.Caption
-$mycomp | Add-Member -MemberType NoteProperty -Name Version -Value $osinfo.info
+$mycomp | Add-Member -MemberType NoteProperty -Name Version -force -Value $osinfo.version
 $mycomp | Add-Member -MemberType NoteProperty -Name Manufacturer -Value $biosinfo.Manufacturer
 $mycomp | Add-Member -MemberType NoteProperty -Name Disks -force -Value $diskinfo.DeviceID
 
