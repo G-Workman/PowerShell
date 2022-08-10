@@ -42,3 +42,19 @@ add-member -membertype Scriptmethod -Name Read -Value {"I'm not entirely sure th
 add-member -membertype Scriptmethod -Name Cook -Value {"I hope my oi is human-friendly; It's all over everything"} -inputobject $mycar
 add-member -membertype Scriptmethod -Name Drive -Value {"Are you Sure?"}  -inputobject $mycar
 add-member -membertype Scriptmethod -Name Script -Value {"Give me all your parameters. I shall do it!"} -inputobject $mycar
+
+$compinfo = Get-WmiObject Win32_ComputerSystem
+$osinfo = Get-WmiObject Win32_OperatingSystem
+$biosinfo = Get-WmiObject Win32_BIOS
+$diskinfo = Get-WmiObject Win32_LogicalDisk
+
+$mycomp = New-Object object
+
+
+$mycomp | Add-Member -MemberType NoteProperty -Name ComputerName -Value $compinfo.Name
+$mycomp | Add-Member -MemberType NoteProperty -Name OperatingSystem -Value $osinfo.Caption
+$mycomp | Add-Member -MemberType NoteProperty -Name Version -Value $osinfo.info
+$mycomp | Add-Member -MemberType NoteProperty -Name Manufacturer -Value $biosinfo.Manufacturer
+$mycomp | Add-Member -MemberType NoteProperty -Name Disks -force -Value $diskinfo.DeviceID
+
+$mycomp
